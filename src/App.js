@@ -15,7 +15,7 @@ function App() {
 
   const handleRemoveClick = () => {
     setTodoData([]);
-  }
+  };
 
   //이벤트 핸들러
   // const handleClick = _id => {
@@ -36,7 +36,12 @@ function App() {
           <h1 className="text-center w-3/4 text-2xl text-red-600 font-semibold">
             Firebase Todo-List
           </h1>
-          <button onClick={handleRemoveClick} className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-400 text-[12px]">Delete All</button>
+          <button
+            onClick={handleRemoveClick}
+            className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-400 text-[12px]"
+          >
+            Delete All
+          </button>
         </div>
         {/* 할일 메인 */}
         <List todoData={todoData} setTodoData={setTodoData} />
