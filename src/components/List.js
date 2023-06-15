@@ -1,6 +1,5 @@
 import React from "react";
 import ListItem from "./ListItem";
-
 const List = ({ todoData, setTodoData }) => {
   // console.log("List 랜더링");
 
@@ -19,5 +18,5 @@ const List = ({ todoData, setTodoData }) => {
   );
 };
 
-//리랜더링 최적화를 위한 코드
+// 리랜더링 최적화를 위한 코드
 export default React.memo(List);
