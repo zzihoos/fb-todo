@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpDiv from "../style/UserCss";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 //firebase 연동
 import firebase from "../firebase";
 
@@ -16,21 +16,31 @@ const SignUp = () => {
       let createUser = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, pw);
-    //firebase 에 회원가입 하기
+        //회원 가입이 성공시 사용자 이름을 업데이트
+      //firebase 에 회원가입 하기
 
-    await createUser.user.updateProfile({
-      name: nickName,
-    });
+      await createUser.user.updateProfile({
+        displayName: nickName,
+      });
 
-    console.log("등록된 정보: ", createUser.user);
-  }
-  catch (err) {
-    console.log(err);
-  }
+      navigate("/login");
+      console.log("등록된 정보: ", createUser.user);
+    } catch (error) {
+      console.log(error.code);
+      if (error.code == "auth/email-already-in-use") {
+        alert("The email address is already in use");
+      } else if (error.code == "auth/invalid-email") {
+        alert("The email address is not valid.");
+      } else if (error.code == "auth/operation-not-allowed") {
+        alert("Operation not allowed.");
+      } else if (error.code == "auth/weak-password") {
+        alert("The password is too weak.");
+      }
+    }
   };
   return (
     <div className="p-6 mt-5 shadow rounded bg-white">
-      <h2>Singup</h2>
+      <h2>Signup</h2>
       {/*
      1. emotion 을 활용하여 tag 의 용도를 구분한다.
      2. css 도 함께 적용한다.
