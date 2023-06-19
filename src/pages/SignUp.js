@@ -16,7 +16,7 @@ const SignUp = () => {
       let createUser = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, pw);
-        //회원 가입이 성공시 사용자 이름을 업데이트
+      //회원 가입이 성공시 사용자 이름을 업데이트
       //firebase 에 회원가입 하기
 
       await createUser.user.updateProfile({
@@ -69,7 +69,7 @@ const SignUp = () => {
             value={pw}
             onChange={e => setPw(e.target.value)}
             required
-            minLength={8}
+            minLength={6}
             maxLength={16}
           />
           <label htmlFor="">비밀번호 확인</label>
@@ -78,7 +78,7 @@ const SignUp = () => {
             value={pwConfirm}
             onChange={e => setPwConfirm(e.target.value)}
             required
-            minLength={8}
+            minLength={6}
             maxLength={16}
           />
           <div className="btn-list">

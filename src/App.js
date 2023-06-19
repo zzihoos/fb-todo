@@ -13,9 +13,9 @@ import { useState } from "react";
 function App() {
   // console.log("App 랜더링");
   // 추후에 Redux/Recoil state 로 관리 필요
-  const [fbName, setFbName] = useState("");
-  const [fbEmail, setFbEmail] = useState("");
-  const [fbUid, setFbUid] = useState("");
+  const [fbName, setFBName] = useState("");
+  const [fbEmail, setFBEmail] = useState("");
+  const [fbUid, setFBUid] = useState("");
 
   return (
     <div className="w-screen h-screen bg-blue-300 overflow-x-hidden">
@@ -23,9 +23,9 @@ function App() {
         fbName={fbName}
         fbEmail={fbEmail}
         fbUid={fbUid}
-        setFbName={setFbName}
-        setFbEmail={setFbEmail}
-        setFbUid={setFbUid}
+        setFBName={setFBName}
+        setFBEmail={setFBEmail}
+        setFBUid={setFBUid}
       />
       <div className="container mx-auto h-full">
         <Routes>
@@ -37,9 +37,9 @@ function App() {
             path="/login"
             element={
               <Login
-                setFbName={setFbName}
-                setFbEmail={setFbEmail}
-                setFbUid={setFbUid}
+                setFBName={setFBName}
+                setFBEmail={setFBEmail}
+                setFBUid={setFBUid}
               />
             }
           />
@@ -56,9 +56,9 @@ function App() {
                 fbName={fbName}
                 fbEmail={fbEmail}
                 fbUid={fbUid}
-                setFbName={setFbName}
-                setFbEmail={setFbEmail}
-                setFbUid={setFbUid}
+                setFBName={setFBName}
+                setFBEmail={setFBEmail}
+                setFBUid={setFBUid}
               />
             }
           />

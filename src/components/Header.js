@@ -6,18 +6,18 @@ const Header = ({
   fbName,
   fbEmail,
   fbUid,
-  setFbName,
-  setFbEmail,
-  setFbUid,
+  setFBName,
+  setFBEmail,
+  setFBUid,
 }) => {
   const navigator = useNavigate();
   // fb 로그아웃
   const handleLogout = () => {
     firebase.auth().signOut();
     console.log("로그아웃");
-    setFbName("");
-    setFbEmail("");
-    setFbUid("");
+    setFBName("");
+    setFBEmail("");
+    setFBUid("");
     navigator("/");
   };
   return (

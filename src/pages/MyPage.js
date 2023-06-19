@@ -7,9 +7,9 @@ const MyPage = ({
   fbName,
   fbEmail,
   fbUid,
-  setFbName,
-  setFbEmail,
-  setFbUid,
+  setFBName,
+  setFBEmail,
+  setFBUid,
 }) => {
   const navigate = useNavigate();
   const [nickName, setNickName] = useState(fbName);
@@ -31,7 +31,7 @@ const MyPage = ({
       await user.updateProfile({
         displayName: nickName,
       });
-      setFbName(nickName);
+      setFBName(nickName);
       setNickName(nickName);
       alert("이름 정보를 변경하였습니다.");
     } catch (error) {
@@ -42,7 +42,7 @@ const MyPage = ({
     e.preventDefault();
     try {
       await user.updateEmail(email);
-      setFbEmail(email);
+      setFBEmail(email);
       alert("이메일 정보를 변경하였습니다.");
     } catch (error) {
       if (error.code == "auth/email-already-in-use") {
@@ -73,9 +73,9 @@ const MyPage = ({
     try {
       await user.delete();
       alert("서비스 탈퇴하셨습니다.");
-      setFbEmail("");
-      setFbName("");
-      setFbUid("");
+      setFBEmail("");
+      setFBName("");
+      setFBUid("");
       navigate("/");
     } catch (error) {
       console.log(error);

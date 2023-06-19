@@ -13,7 +13,7 @@ const Login = ({ setFBName, setFBEmail, setFBUid }) => {
   };	
 
   const onFinish = async values => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
     // Firebase 로그인
     try {
       await firebase
@@ -41,8 +41,11 @@ const Login = ({ setFBName, setFBEmail, setFBUid }) => {
       } else {
         setModalMessage("로그인이 실패하였습니다.");
       }
+
       showModal();
     }
+
+
   };
   const onFinishFailed = errorInfo => {
     console.log("Failed:", errorInfo);
