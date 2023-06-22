@@ -8,7 +8,9 @@ import SignUp from "./pages/SignUp";
 import Todo from "./pages/Todo";
 import NotFound from "./pages/NotFound";
 import MyPage from "./pages/MyPage";
+import Schedule from "./pages/Schedule";
 import { useState } from "react";
+import Upload from "./pages/Upload";
 
 function App() {
   // console.log("App 랜더링");
@@ -48,6 +50,8 @@ function App() {
             path="/todo"
             element={<Todo fbName={fbName} fbEmail={fbEmail} fbUid={fbUid} />}
           />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/upload" element={<Upload />} />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/mypage"
