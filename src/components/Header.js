@@ -1,24 +1,23 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import firebase from "../firebase";
+import { Link } from "react-router-dom";
+import { useLogout, useAuthContext } from "../hooks/useFirebase";
 
-const Header = ({
-  fbName,
-  fbEmail,
-  fbUid,
-  setFBName,
-  setFBEmail,
-  setFBUid,
-}) => {
-  const navigator = useNavigate();
+const Header = () => {
+  // AuthContex 로그아웃 실행으로 상태 변경
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  // const navigator = useNavigate();
   // fb 로그아웃
   const handleLogout = () => {
-    firebase.auth().signOut();
-    console.log("로그아웃");
-    setFBName("");
-    setFBEmail("");
-    setFBUid("");
-    navigator("/");
+    logout();
+
+    // firebase.auth().signOut();
+    // console.log("로그아웃");
+    // setFBName("");
+    // setFBEmail("");
+    // setFBUid("");
+    // navigator("/");
   };
   return (
     <header className="p-7 bg-black">
@@ -39,7 +38,7 @@ const Header = ({
           </li>
           <li>
             <Link
-              to={fbUid ? "/todo" : "/login"}
+              to={user ? "/todo" : "/login"}
               className="text-white hover:text-orange-600"
             >
               Todo
@@ -51,17 +50,22 @@ const Header = ({
             </Link>
           </li>
           <li>
-          <Link to="/upload" className="text-white hover:text-orange-600">
-                Upload
-              </Link>
-              </li>
+            <Link to="/upload" className="text-white hover:text-orange-600">
+              Upload
+            </Link>
+          </li>
+          <li>
+            <Link to="/chart" className="text-white hover:text-orange-600">
+              Chart
+            </Link>
+          </li>
         </ul>
         <div className="flex justify-center gap-5">
-          {fbUid ? (
+          {user ? (
             <div className="text-white">
-              {fbName} {fbEmail} {fbUid}
+              {user.displayName} {user.email} {user.uid}
               <button onClick={handleLogout}>로그아웃</button>
-            <Link to = "/mypage">마이페이지</Link>
+              <Link to="/mypage">마이페이지</Link>
             </div>
           ) : (
             <>
